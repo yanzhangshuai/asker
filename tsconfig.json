@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"lib": ["ESNext", "es6", "es2015", "dom"],
+		"declaration": true,
+		"rootDir": "./",
+		"strict": true,
+		"skipLibCheck": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+		"esModuleInterop": true,
+		"downlevelIteration": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	},
+	"include": ["src/**/*.ts"]
+}
