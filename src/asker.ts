@@ -1,17 +1,17 @@
 import qs from 'query-string';
 import axios, { AxiosInstance } from 'axios';
-import { HttpClientCanceler } from './canceler';
+import { AskerCanceler } from './canceler';
 
 import { AskerResponse, AskerRequestConfig, AskerUploadRequestConfig, AskerOptions, InterceptorManager } from './type';
 
 export class Asker {
   private _axios: AxiosInstance;
   private _options: AskerOptions;
-  private readonly _canceler: HttpClientCanceler;
+  private readonly _canceler: AskerCanceler;
 
   static asker: Asker;
   constructor(options?: AskerOptions) {
-    this._canceler = new HttpClientCanceler();
+    this._canceler = new AskerCanceler();
     this._options = options || {};
     this._axios = axios.create(options?.request || {});
 
@@ -32,7 +32,7 @@ export class Asker {
     return this.axios.interceptors;
   }
 
-  get canceler(): HttpClientCanceler {
+  get canceler(): AskerCanceler {
     return this._canceler;
   }
 

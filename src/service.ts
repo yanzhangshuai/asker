@@ -1,7 +1,7 @@
 import { Asker } from './asker';
 
 export interface _ServiceWithState {
-  $http: Asker;
+  $asker: Asker;
 }
 
 export type DefineServiceOptions<A> = A & ThisType<A & _ServiceWithState>
@@ -10,12 +10,12 @@ export type _Method = (...args: unknown[]) => unknown;
 
 export type _ActionsTree = Record<string, _Method>
 
-export type Service<T = {}> = (_ActionsTree extends T ? {} : T) & { $http: Asker };
+export type Service<T = {}> = (_ActionsTree extends T ? {} : T) & { $asker: Asker };
 
 
 export interface ServiceDefinition<T = {}> {
   (): Service<T>
-  $http: Asker;
+  $asker: Asker;
 }
 
 
@@ -23,11 +23,11 @@ export function defineService<T>(options: DefineServiceOptions<T>): ServiceDefin
   const serviceDefinition = () => {
     return {
       ...options,
-      $http: Asker.asker
+      $asker: Asker.asker
     };
 
   };
-  serviceDefinition.$http = Asker.asker;
+  serviceDefinition.$asker = Asker.asker;
 
   return serviceDefinition;
 }

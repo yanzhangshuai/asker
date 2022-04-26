@@ -2,7 +2,7 @@ import axios, { Canceler } from 'axios';
 import { isFunction } from './util';
 import { AskerRequestConfig } from './type';
 
-export class HttpClientCanceler {
+export class AskerCanceler {
   pendingMap: Map<string, Canceler>;
 
   constructor() {
