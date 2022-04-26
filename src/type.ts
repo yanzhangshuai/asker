@@ -1,40 +1,40 @@
-import { AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse, CancelToken } from 'axios';
+import type { AxiosInterceptorManager, AxiosRequestConfig, AxiosResponse, CancelToken } from 'axios'
 
 export interface AskerOptions {
-  request?: AskerRequestConfig;
+  request?: AskerRequestConfig
 }
 
-export type InterceptorManager = {
-  request: AxiosInterceptorManager<AskerRequestConfig>;
-  response: AxiosInterceptorManager<AskerResponse<unknown>>;
-};
+export interface InterceptorManager {
+  request: AxiosInterceptorManager<AskerRequestConfig>
+  response: AxiosInterceptorManager<AskerResponse<unknown>>
+}
 
 export interface AskerResponse<T> extends AxiosResponse<T> {
-  config: AskerRequestConfig;
+  config: AskerRequestConfig
 }
 
 export interface AskerRequestConfig extends AxiosRequestConfig {
-  uploadBaseUrl?: string;
+  uploadBaseUrl?: string
   /**
    * 是否忽略取消
    */
-  ignoreCancelToken?: boolean;
+  ignoreCancelToken?: boolean
   /**
    * 是否返回全部Response信息
    */
-  returnAllResponse?: boolean;
+  returnAllResponse?: boolean
 }
 
 // multipart/form-data: upload file
 export interface AskerUploadRequestConfig extends AskerRequestConfig {
   // Other parameters
-  data?: Record<string, string | Array<string>>;
+  data?: Record<string, string | Array<string>>
   // File parameter interface field name
-  name?: string;
+  name?: string
   // file name
-  file: File;
+  file: File
   // file name
-  filename?: string;
+  filename?: string
 
-  cancelToken?: CancelToken;
+  cancelToken?: CancelToken
 }

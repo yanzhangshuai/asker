@@ -4,22 +4,19 @@ export type {
   _Method,
   _ActionsTree,
   Service,
-  ServiceDefinition
-} from './service';
+  ServiceDefinition,
+} from './service'
 
+export { defineService } from './service'
 
-export { defineService } from './service';
-
-
-export { createAsker } from './createAsker';
-
+export { createAsker } from './createAsker'
 
 export type {
   AskerOptions,
   InterceptorManager,
   AskerResponse,
   AskerRequestConfig,
-  AskerUploadRequestConfig
-} from './type';
+  AskerUploadRequestConfig,
+} from './type'
 
-export { useAsker } from './asker';
+export { useAsker } from './asker'
