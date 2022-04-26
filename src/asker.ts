@@ -193,8 +193,6 @@ export class Asker {
   }
 }
 
-
-export function useHttp(): Asker {
-
+export function useAsker(): Readonly<Asker> {
   return Asker.asker;
 }

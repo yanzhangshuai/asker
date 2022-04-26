@@ -21,3 +21,5 @@ export type {
   AskerRequestConfig,
   AskerUploadRequestConfig
 } from './type';
+
+export { useAsker } from './asker';
