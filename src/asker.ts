@@ -1,6 +1,6 @@
-import qs from 'query-string'
-import type { AxiosInstance } from 'axios'
 import axios from 'axios'
+import qs from 'query-string'
+import type { AxiosInstance, RawAxiosRequestHeaders } from 'axios'
 import { AskerCanceler } from './canceler'
 
 import type { AskerOptions, AskerRequestConfig, AskerResponse, AskerUploadRequestConfig, InterceptorManager } from './type'
@@ -143,10 +143,11 @@ export class Asker {
           ...config,
           method: config.method || 'POST',
           data: formData,
+          //TODO:1.2.2 header类型
           headers: {
-            'Content-type': 'multipart/form-data;charset=UTF-8',
+            'content-type': 'multipart/form-data;charset=UTF-8',
             ...(config.headers || {}),
-          },
+          } as RawAxiosRequestHeaders,
           cancelToken: config.cancelToken,
         })
         .then((res) => {
@@ -177,8 +178,9 @@ export class Asker {
 
   // support form-data
   private supportFormData(config: AskerRequestConfig): AskerRequestConfig {
-    const headers = config.headers || this.options?.request?.headers || {}
-    const contentType = headers?.['Content-Type'] || headers?.['content-type']
+     //TODO:1.2.2 header类型
+    const headers = (config.headers || this.options?.request?.headers || {}) as RawAxiosRequestHeaders
+    const contentType = headers?.['ContentType'] || headers?.['content-type']
 
     if (contentType !== 'application/x-www-form-urlencoded;charset=UTF-8' || !Reflect.has(config, 'data') || config.method?.toUpperCase() === 'GET')
       return config
