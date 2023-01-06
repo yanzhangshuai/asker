@@ -1,6 +1,6 @@
 {
   "name": "@mwjz/asker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -49,15 +49,15 @@
   "devDependencies": {
     "@antfu/eslint-config-ts": "^0.34.0",
     "@types/node": "^18.11.18",
-    "axios": "^1.2.2",
+    "axios": "*",
     "eslint": "^8.31.0",
-    "query-string": "^8.1.0",
+    "query-string": "*",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
-    "axios": "^*",
-    "query-string": "^7.0.0"
+    "axios": "*",
+    "query-string": "*"
   },
    "eslintConfig": {
 		"extends": "@antfu/eslint-config-ts"
